@@ -1,9 +1,9 @@
 import React from 'react';
-import { SymbolView } from 'expo-symbols';
+import { Ionicons } from '@expo/vector-icons';
 import { Link, Tabs } from 'expo-router';
-import { Platform, Pressable } from 'react-native';
+import { Pressable } from 'react-native';
 
-import Colors from '@/constants/Colors';
+import ThemeColors, { Colors } from '@/constants/Colors';
 import { useColorScheme } from '@/components/useColorScheme';
 import { useClientOnlyValue } from '@/components/useClientOnlyValue';
 
@@ -13,7 +13,8 @@ export default function TabLayout() {
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme].tint,
+        tabBarActiveTintColor: Colors.ufBlue,
+        tabBarInactiveTintColor: Colors.ufOrange,
         // Disable the static render of the header on web
         // to prevent a hydration error in React Navigation v6.
         headerShown: useClientOnlyValue(false, true),
@@ -23,16 +24,16 @@ export default function TabLayout() {
         options={{
           title: 'Home',
           tabBarIcon: ({ color }) => (
-            <SymbolView name="house.fill" tintColor={color} size={28} />
+            <Ionicons color={color} name="home" size={24} />
           ),
           headerRight: () => (
             <Link href="/modal" asChild>
               <Pressable style={{ marginRight: 15 }}>
                 {({ pressed }) => (
-                  <SymbolView
-                    name="info.circle"
-                    size={25}
-                    tintColor={Colors[colorScheme].text}
+                  <Ionicons
+                    color={ThemeColors[colorScheme].text}
+                    name="information-circle-outline"
+                    size={24}
                     style={{ opacity: pressed ? 0.5 : 1 }}
                   />
                 )}
@@ -44,9 +45,9 @@ export default function TabLayout() {
       <Tabs.Screen
         name="swampshere"
         options={{
-          title: 'Feed',
+          title: 'SwampSphere',
           tabBarIcon: ({ color }) => (
-            <SymbolView name="rectangle.grid.2x2.fill" tintColor={color} size={28} />
+            <Ionicons color={color} name="globe-outline" size={24} />
           ),
         }}
       />
@@ -55,7 +56,7 @@ export default function TabLayout() {
         options={{
           title: 'Calendar',
           tabBarIcon: ({ color }) => (
-            <SymbolView name="calendar" tintColor={color} size={28} />
+            <Ionicons color={color} name="calendar-outline" size={24} />
           ),
         }}
       />
@@ -64,7 +65,7 @@ export default function TabLayout() {
         options={{
           title: 'Profile',
           tabBarIcon: ({ color }) => (
-            <SymbolView name="person.crop.circle.fill" tintColor={color} size={28} />
+            <Ionicons color={color} name="person-outline" size={24} />
           ),
         }}
       />

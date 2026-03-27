@@ -51,6 +51,24 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
+        name="calendar"
+        options={{
+          title: 'Calendar',
+          tabBarIcon: ({ color }) => (
+            <SymbolView name="calendar" tintColor={color} size={28} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="profile"
+        options={{
+          title: 'Profile',
+          tabBarIcon: ({ color }) => (
+            <SymbolView name="person.crop.circle.fill" tintColor={color} size={28} />
+          ),
+        }}
+      />
+      <Tabs.Screen
         name="two"
         options={{
           href: null,
